@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 
 public class MandateDetails {
 	
+	private String mndtReqId;
 	private String accountNumber;
 	private String mandateIssuedTo;
 	private String frequency;
@@ -18,15 +19,22 @@ public class MandateDetails {
 	private String purposeOfMandate;
 	private String authMode;
 	
+	public String getMndtReqId() {
+		return mndtReqId;
+	}
+	public void setMndtReqId(String mndtReqId) {
+		this.mndtReqId = mndtReqId;
+	}
 	public String getAuthMode() {
 		return authMode;
 	}
 	public void setAuthMode(String authMode) {
 		this.authMode = authMode;
 	}
-	public MandateDetails(String accountNumber, String mandateIssuedTo, String frequency, BigDecimal amountInFigures,
+	public MandateDetails(String mndtReqId,String accountNumber, String mandateIssuedTo, String frequency, BigDecimal amountInFigures,
 			String amountInWords, String startDate, String endDate, String purposeOfMandate, String authMode) {
 		super();
+		this.mndtReqId=mndtReqId;
 		this.accountNumber = accountNumber;
 		this.mandateIssuedTo = mandateIssuedTo;
 		this.frequency = frequency;
