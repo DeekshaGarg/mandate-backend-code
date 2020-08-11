@@ -1,6 +1,22 @@
 package com.airtelpaymentbank.enach.emandate.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class Info {
+	
+	@JsonIgnore
+	@Id
+	private long idForDb;
+	public long getIdForDb() {
+		return idForDb;
+	}
+	public void setIdForDb(long idForDb) {
+		this.idForDb = idForDb;
+	}
 	private String Id;
 	private String CatCode;
 	private int UtilCode;

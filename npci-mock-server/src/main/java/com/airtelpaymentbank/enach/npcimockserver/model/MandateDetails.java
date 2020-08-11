@@ -1,10 +1,6 @@
-package com.airtelpaymentbank.enach.emandate.model;
+package com.airtelpaymentbank.enach.npcimockserver.model;
 
 import java.math.BigDecimal;
-import java.util.Date;
-
-import javax.persistence.Entity;
-
 
 public class MandateDetails {
 	
@@ -85,5 +81,7 @@ public class MandateDetails {
 	public void setPurposeOfMandate(String purposeOfMandate) {
 		this.purposeOfMandate = purposeOfMandate;
 	}
+
+
 
 }

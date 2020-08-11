@@ -3,14 +3,23 @@ package com.airtelpaymentbank.enach.npcimockserver.controller;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.ws.rs.QueryParam;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.airtelpaymentbank.enach.npcimockserver.NpciServiceProxy;
 import com.airtelpaymentbank.enach.npcimockserver.model.ColltnAmt;
 import com.airtelpaymentbank.enach.npcimockserver.model.CrAccDtl;
 import com.airtelpaymentbank.enach.npcimockserver.model.Dbtr;
 import com.airtelpaymentbank.enach.npcimockserver.model.GrpHdr;
 import com.airtelpaymentbank.enach.npcimockserver.model.Info;
+import com.airtelpaymentbank.enach.npcimockserver.model.MandateDetails;
 import com.airtelpaymentbank.enach.npcimockserver.model.MaxAmt;
 import com.airtelpaymentbank.enach.npcimockserver.model.Mndt;
 import com.airtelpaymentbank.enach.npcimockserver.model.MndtAuthReq;
@@ -20,8 +29,11 @@ import com.airtelpaymentbank.enach.npcimockserver.model.ReqInitPty;
 @RestController
 public class NpciMockServerController {
 	
+	@Autowired
+	private NpciServiceProxy npciServiceProxy;
+	
 	@GetMapping("/npci/mandate-auth-request")
-	public MndtAuthReq getMndtAuthReq() {
+	public MandateDetails getMndtAuthReq() {
 		MndtAuthReq mndtAuthReq=new MndtAuthReq();
 		GrpHdr grpHdr=new GrpHdr();
 		grpHdr.setCreDtTm(new Date());
@@ -71,7 +83,7 @@ public class NpciMockServerController {
 		
 		Mndt.setMndt_Type("DEBIT");
 		Mndt.setMndtId("UMRN");
-		Mndt.setMndtReqId("000f0f29dc27f00000101b09c52b8e50037");
+		Mndt.setMndtReqId("000f0f29dc27f00000101b09c52b8e50038");
 		Mndt.setSchm_Nm("ABC123");
 		Ocrncs ocrncs=new Ocrncs();
 		ocrncs.setFnlColltnDt(new Date());
@@ -81,7 +93,8 @@ public class NpciMockServerController {
 		Mndt.setOcrncs(ocrncs);
 		mndtAuthReq.setMndt(Mndt);
 		
-		return mndtAuthReq;
+		return npciServiceProxy.mndtAuthReqToBank(mndtAuthReq,"debitCard");
+		
 	}
 
 }

@@ -1,14 +1,32 @@
 package com.airtelpaymentbank.enach.emandate.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Mndt {
+	@Id
 	private String MndtReqId;
     private String MndtId;
     private String Mndt_Type;
     private String Schm_Nm;
+    
+    @OneToOne(cascade=CascadeType.ALL )
     private Ocrncs ocrncs;
+    
+    @OneToOne(cascade=CascadeType.ALL )
     private ColltnAmt colltnAmt;
+    
+    @OneToOne(cascade=CascadeType.ALL )
     private MaxAmt maxAmt;
+    
+    @OneToOne(cascade=CascadeType.ALL )
     private Dbtr dbtr;
+    
+    @OneToOne(cascade=CascadeType.ALL )
     private CrAccDtl crAccDtl;
 	public String getMndtReqId() {
 		return MndtReqId;

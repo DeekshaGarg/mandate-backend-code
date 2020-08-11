@@ -2,8 +2,23 @@ package com.airtelpaymentbank.enach.emandate.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class ColltnAmt {
 	
+	@JsonIgnore
+	@Id
+	private long id;
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	private String _Ccy;
     private BigDecimal __text;
 	public String get_Ccy() {
