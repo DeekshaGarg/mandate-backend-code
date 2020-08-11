@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class MandateDetails {
 	
+	private String mndtReqId;
 	private String accountNumber;
 	private String mandateIssuedTo;
 	private String frequency;
@@ -14,6 +15,12 @@ public class MandateDetails {
 	private String purposeOfMandate;
 	private String authMode;
 	
+	public String getMndtReqId() {
+		return mndtReqId;
+	}
+	public void setMndtReqId(String mndtReqId) {
+		this.mndtReqId = mndtReqId;
+	}
 	public String getAuthMode() {
 		return authMode;
 	}

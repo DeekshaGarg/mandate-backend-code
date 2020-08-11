@@ -8,6 +8,7 @@ import javax.ws.rs.QueryParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,8 +33,8 @@ public class NpciMockServerController {
 	@Autowired
 	private NpciServiceProxy npciServiceProxy;
 	
-	@GetMapping("/npci/mandate-auth-request")
-	public MandateDetails getMndtAuthReq() {
+	@GetMapping("/npci/mandate/auth-request/{authMode}/{mndtReqId}")
+	public MandateDetails getMndtAuthReq(@PathVariable String authMode,@PathVariable String mndtReqId) {
 		MndtAuthReq mndtAuthReq=new MndtAuthReq();
 		GrpHdr grpHdr=new GrpHdr();
 		grpHdr.setCreDtTm(new Date());
@@ -83,7 +84,7 @@ public class NpciMockServerController {
 		
 		Mndt.setMndt_Type("DEBIT");
 		Mndt.setMndtId("UMRN");
-		Mndt.setMndtReqId("000f0f29dc27f00000101b09c52b8e50038");
+		Mndt.setMndtReqId(mndtReqId);
 		Mndt.setSchm_Nm("ABC123");
 		Ocrncs ocrncs=new Ocrncs();
 		ocrncs.setFnlColltnDt(new Date());

@@ -11,7 +11,7 @@ import com.airtelpaymentbank.enach.npcimockserver.model.MndtAuthReq;
 @FeignClient(name = "emandate")
 public interface NpciServiceProxy {
 
-	@PostMapping("/bank/mandate-auth-request/{authMode}")
+	@PostMapping("/bank/mandate/auth-request/{authMode}")
 	public MandateDetails mndtAuthReqToBank(@RequestBody MndtAuthReq mndtAuthReq, @PathVariable("authMode") String authMode);
 
 }
