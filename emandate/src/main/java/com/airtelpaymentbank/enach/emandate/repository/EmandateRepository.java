@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.airtelpaymentbank.enach.emandate.model.MndtAuthReq;
 
 @Repository
-public interface EmandateRepository extends CrudRepository<MndtAuthReq, Long>{
+public interface EMandateRepository extends CrudRepository<MndtAuthReq, Long>{
 
 }

@@ -2,14 +2,22 @@ package com.airtelpaymentbank.enach.emandate.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@XmlType
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Info {
 	
 	@JsonIgnore
 	@Id
+	@XmlTransient
 	private long idForDb;
 	public long getIdForDb() {
 		return idForDb;
@@ -17,11 +25,18 @@ public class Info {
 	public void setIdForDb(long idForDb) {
 		this.idForDb = idForDb;
 	}
+	
+	@XmlElement
 	private String Id;
+	@XmlElement
 	private String CatCode;
+	@XmlElement
 	private int UtilCode;
+	@XmlElement
 	private String CatDesc;
+	@XmlElement
 	private String Name;
+	@XmlElement
 	private String Spn_Bnk_Nm;
 	public String getId() {
 		return Id;

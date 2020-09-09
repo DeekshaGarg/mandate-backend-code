@@ -1,20 +1,31 @@
 package com.airtelpaymentbank.enach.emandate.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@XmlType
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Ocrncs {
+	
+	@XmlElement
 	private String SeqTp;
+	@XmlElement
 	private String Frqcy;
-	private Date FrstColltnDt;
-	private Date FnlColltnDt;
+	@XmlElement
+	private String FrstColltnDt;
+	@XmlElement
+	private String FnlColltnDt;
 	@JsonIgnore
 	@Id
+	@XmlTransient
 	private long idForDb;
 	public long getIdForDb() {
 		return idForDb;
@@ -34,16 +45,16 @@ public class Ocrncs {
 	public void setFrqcy(String frqcy) {
 		Frqcy = frqcy;
 	}
-	public Date getFrstColltnDt() {
+	public String getFrstColltnDt() {
 		return FrstColltnDt;
 	}
-	public void setFrstColltnDt(Date frstColltnDt) {
+	public void setFrstColltnDt(String frstColltnDt) {
 		FrstColltnDt = frstColltnDt;
 	}
-	public Date getFnlColltnDt() {
+	public String getFnlColltnDt() {
 		return FnlColltnDt;
 	}
-	public void setFnlColltnDt(Date fnlColltnDt) {
+	public void setFnlColltnDt(String fnlColltnDt) {
 		FnlColltnDt = fnlColltnDt;
 	}
 }

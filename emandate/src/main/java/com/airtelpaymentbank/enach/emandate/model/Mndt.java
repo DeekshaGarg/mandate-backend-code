@@ -2,31 +2,45 @@ package com.airtelpaymentbank.enach.emandate.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 @Entity
+@XmlType
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Mndt {
 	@Id
+	@XmlElement
 	private String MndtReqId;
+	@XmlElement
     private String MndtId;
+	@XmlElement
     private String Mndt_Type;
+	@XmlElement
     private String Schm_Nm;
     
     @OneToOne(cascade=CascadeType.ALL )
+    @XmlElement(name = "Ocrncs")
     private Ocrncs ocrncs;
     
     @OneToOne(cascade=CascadeType.ALL )
+    @XmlElement(name="ColltnAmt")
     private ColltnAmt colltnAmt;
     
     @OneToOne(cascade=CascadeType.ALL )
+    @XmlElement(name="MaxAmt")
     private MaxAmt maxAmt;
     
     @OneToOne(cascade=CascadeType.ALL )
+    @XmlElement(name="Dbtr")
     private Dbtr dbtr;
     
     @OneToOne(cascade=CascadeType.ALL )
+    @XmlElement(name="CrAccDtl")
     private CrAccDtl crAccDtl;
 	public String getMndtReqId() {
 		return MndtReqId;

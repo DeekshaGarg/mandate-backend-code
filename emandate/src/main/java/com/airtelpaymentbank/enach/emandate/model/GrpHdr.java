@@ -4,17 +4,26 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 @Entity
+@XmlType
+@XmlAccessorType(XmlAccessType.FIELD)
 public class GrpHdr {
 	@Id
+	@XmlElement
 	private String NPCI_RefMsgId;
+	
+	@XmlElement
 	private Date CreDtTm;
 	
 	@OneToOne(cascade=CascadeType.ALL )
+	@XmlElement
 	private ReqInitPty ReqInitPty;
 	
 	public String getNPCI_RefMsgId() {

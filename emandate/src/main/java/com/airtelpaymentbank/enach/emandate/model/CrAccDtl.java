@@ -2,17 +2,28 @@ package com.airtelpaymentbank.enach.emandate.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@XmlType
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CrAccDtl {
+	@XmlElement
 	private String Nm;
+	@XmlElement
 	private String AccNo;
+	@XmlElement
 	private String MmbId;
 
 	@JsonIgnore
 	@Id
+	@XmlTransient
 	private long id;
 
 	public long getId() {
